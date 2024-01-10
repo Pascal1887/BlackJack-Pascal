@@ -1,11 +1,22 @@
 import java.util.*;
 
 class Blackjack {
+    
     public static void main(String[] args) {
+       
+        //Input vom User 
+
         Scanner scanner = new Scanner(System.in);
+
+        //ArrayList weil man bei Array nur eine bestimmte größe hat
+        
         List<String> deck = new ArrayList<>(List.of(
             "2", "3", "4", "5", "6", "7", "8", "9", "10",
             "Jack", "Queen", "King", "Ace",
+            "2", "3", "4", "5", "6", "7", "8", "9", "10",
+            "Jack", "Queen", "King", "Ace"
+            "2", "3", "4", "5", "6", "7", "8", "9", "10",
+            "Jack", "Queen", "King", "Ace"
             "2", "3", "4", "5", "6", "7", "8", "9", "10",
             "Jack", "Queen", "King", "Ace"
         ));
@@ -13,14 +24,21 @@ class Blackjack {
         Collections.shuffle(deck);
         int playerTotal = 0;
 
+        //das für den Player 2 zufällige Karten gezogen werden 
+        
         playerTotal += getCardValue(deck.remove(0));
         playerTotal += getCardValue(deck.remove(0));
 
         System.out.println("Your cards: " + playerTotal);
 
+        //es wird gefragt ob man ziehen will 
+        
         while (playerTotal < 21) {
             System.out.println("1. Hit  2. Stand");
             int choice = scanner.nextInt();
+
+            //falls man noch eine Karte zieht
+            
             if (choice == 1) {
                 playerTotal += getCardValue(deck.remove(0));
                 System.out.println("Your cards: " + playerTotal);
@@ -29,8 +47,8 @@ class Blackjack {
             }
         }
 
-        // TODO: Implement dealer logic and win/lose conditions
-
+        // Keine Eingaben mehr 
+        
         scanner.close();
     }
 
